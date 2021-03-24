@@ -1,10 +1,10 @@
-package didigugu.top;
+package top.moyeye;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class DiguApplicationTests {
+class MoyeApplicationTests {
 
     @Test
     void contextLoads() {

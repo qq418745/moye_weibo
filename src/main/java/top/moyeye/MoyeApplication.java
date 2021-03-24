@@ -1,13 +1,13 @@
-package didigugu.top;
+package top.moyeye;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DiguApplication {
+public class MoyeApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DiguApplication.class, args);
+        SpringApplication.run(MoyeApplication.class, args);
     }
 
 }
