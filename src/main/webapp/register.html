@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>莫耶微博 | 注册</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--此标签让360安全浏览器默认使用极速模式-->
+  <meta name="renderer" content="webkit">
+  
+  <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="./plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <link rel="stylesheet" href="./dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition register-page">
+<div class="register-box">
+  <div class="register-logo">
+    <b>莫耶 </b> 微博
+  </div>
+
+  <div class="card">
+    <div class="card-body register-card-body">
+      <p class="login-box-msg">注册新会员</p>
+
+      <form action="./addUser" method="post">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="用户名">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="昵称">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-user-tag"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="密码">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+
+      </form>
+
+      <div class="social-auth-links text-center">
+        <a href="#" class="btn btn-block btn-primary">
+         注册
+        </a>
+      </div>
+
+      <a href="login.html" class="text-center">已经注册? 前往登陆</a>
+    </div>
+    <!-- /.form-box -->
+  </div><!-- /.card -->
+</div>
+<!-- /.register-box -->
+
+<!-- jQuery -->
+<script src="./plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="./dist/js/adminlte.min.js"></script>
+</body>
+</html>

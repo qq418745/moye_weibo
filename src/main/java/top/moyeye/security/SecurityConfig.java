@@ -45,6 +45,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 "/plugins/**",
                 "/*.html",
                 "/",
+                "/view/**",
                 "/login**").permitAll()
                 .anyRequest().authenticated();
 
@@ -52,8 +53,8 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login.html")
                 .loginProcessingUrl("/login-check")
-                .successForwardUrl("/home.html")
-                .failureUrl("/login.html?type=error").permitAll()
+                .successForwardUrl("/")
+                .failureUrl("/login.html?error=loginError").permitAll()
                 .and().csrf().disable()//关闭CSRF
                 .headers().contentTypeOptions().disable();//放静态资源
 

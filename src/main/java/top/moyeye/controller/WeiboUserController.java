@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class WeiboUserController {
 
 
-    @RequestMapping("home")
+    @RequestMapping("profile")
     public String home(){
-        return "redirect:/home.html";
+        return "redirect:../#/profile";
     }
 
 
