@@ -12,5 +12,7 @@ public interface WeiboUserService {
 
     WeiboUser save(WeiboUser user);
 
+    WeiboUser add(WeiboUser user);
+
 
 }

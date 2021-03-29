@@ -1,5 +1,6 @@
 package top.moyeye.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,8 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
+
+import static top.moyeye.consts.IConst.DEFAULT_TIME_PATTERN;
 
 @Accessors(chain = true)
 @NoArgsConstructor
@@ -46,7 +49,10 @@ public class WeiboUser {
 
     private String job;
 
-    private String explain;
+    private String user_explain;
 
-    private Timestamp timestamp;
+    private String user_logo;
+
+    @JsonFormat(pattern = DEFAULT_TIME_PATTERN, timezone="GMT+8")
+    private Timestamp createTime;
 }

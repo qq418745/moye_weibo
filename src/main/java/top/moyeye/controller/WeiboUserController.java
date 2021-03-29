@@ -34,7 +34,7 @@ public class WeiboUserController extends BaseController{
     @RequestMapping("p/add")
     public String add(String username, String password, String nickname){
         System.out.println(username  + password + nickname);
-        weiboUserService.save(new WeiboUser().setUsername(username).setPassword(password).setNickname(nickname));
+        weiboUserService.add(new WeiboUser().setUsername(username).setPassword(password).setNickname(nickname));
         return REDIRECT;
 
     }
@@ -59,6 +59,7 @@ public class WeiboUserController extends BaseController{
     public WeiboUser currentWeiboUser(){
          return  currentUser();
     }
+
     @RequestMapping("save")
     @ResponseBody
     public WeiboUser save(@RequestBody WeiboUser weiboUser){

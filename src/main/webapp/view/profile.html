@@ -5,14 +5,15 @@
         <div class="card card-primary card-outline">
             <div class="card-body box-profile">
                 <div class="text-center">
-                    <img class="profile-user-img img-fluid img-circle"
-                         src="./dist/img/user4-128x128.jpg"
-                         alt="User profile picture">
+                    <svg ng-show="!weiboUser.userLogo" class="octicon octicon-mark-github v-align-middle" height="32" viewBox="0 0 16 16" version="1.1" width="32" aria-hidden="true"><path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    <img  ng-show="weiboUser.userLogo" class="profile-user-img img-fluid img-circle"
+                         src="{{weiboUser.user_logo}}"
+                         alt="用户头像">
                 </div>
 
                 <h3 class="profile-username text-center" >{{weiboUser.nickname}}</h3>
 
-                <p class="text-muted text-center">{{weiboUser.explain}}</p>
+                <p class="text-muted text-center">{{weiboUser.user_explain}}</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
@@ -61,7 +62,7 @@
 
                 <strong><i class="far fa-file-alt mr-1"></i> 个人说明</strong>
 
-                <p class="text-muted">{{weiboUser.explain}}</p>
+                <p class="text-muted">{{weiboUser.user_explain}}</p>
             </div>
             <!-- /.card-body -->
         </div>
@@ -72,14 +73,14 @@
         <div class="card">
             <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">动态</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#timeline" data-toggle="tab">消息</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">设置</a></li>
+                    <li class="nav-item"><a class="nav-link active" ng-class="{'active' : cardSwitch == 'activity'}" ng-click="cardSwitch = 'activity'">动态</a></li>
+                    <li class="nav-item"><a class="nav-link"  ng-class="{'active' : cardSwitch == 'timeline'}" ng-click="cardSwitch = 'timeline'" >消息</a></li>
+                    <li class="nav-item"><a class="nav-link"  ng-class="{'active' : cardSwitch == 'settings'}" ng-click="cardSwitch = 'settings'">设置</a></li>
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
                 <div class="tab-content">
-                    <div class="active tab-pane" id="activity">
+                    <div  ng-show="cardSwitch == 'activity'">
                         <!-- Post -->
                         <div class="post">
                             <div class="user-block">
@@ -192,8 +193,8 @@
                         </div>
                         <!-- /.post -->
                     </div>
-                    <!-- /.tab-pane -->
-                    <div class="tab-pane" id="timeline">
+
+                    <div  ng-show="cardSwitch == 'timeline'" >
                         <!-- The timeline -->
                         <div class="timeline timeline-inverse">
                             <!-- timeline time label -->
@@ -287,61 +288,49 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /.tab-pane -->
 
-                    <div class="tab-pane" id="settings">
-                        <form class="form-horizontal">
+                    <div  ng-show="cardSwitch == 'settings'" >
                             <div class="form-group row">
                                 <label for="inputName" class="col-sm-2 col-form-label">昵称</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputName" placeholder="昵称">
+                                    <input type="text" class="form-control" id="inputName" ng-model="setWeiboUser.nickname" placeholder="昵称">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail" class="col-sm-2 col-form-label">邮箱</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" id="inputEmail" placeholder="邮箱">
+                                    <input type="email" class="form-control" id="inputEmail" ng-model="setWeiboUser.email" placeholder="邮箱">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputName2" class="col-sm-2 col-form-label">职业</label>
+                                <label for="inputExperience" class="col-sm-2 col-form-label">职业</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputName2" placeholder="职业">
+                                    <input type="text" class="form-control" id="inputExperience" ng-model="setWeiboUser.job" placeholder="职业">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputExperience" class="col-sm-2 col-form-label">位置</label>
+                                <label for="province" class="col-sm-2 col-form-label">位置</label>
                                 <div class="col-sm-10">
-                                    <textarea class="form-control" id="inputExperience" placeholder="位置"></textarea>
+                                    <input type="text" class="form-control" id="province" ng-model="setWeiboUser.province" placeholder="位置">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputSkills" class="col-sm-2 col-form-label">爱好</label>
+                                <label for="hobby" class="col-sm-2 col-form-label">爱好</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputSkills" placeholder="爱好">
+                                    <input type="text" class="form-control" id="hobby" ng-model="setWeiboUser.hobby" placeholder="爱好">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="inputSkills" class="col-sm-2 col-form-label">个人说明</label>
+                                <label  class="col-sm-2 col-form-label">个人说明</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="inputSkills" placeholder="个人说明">
+                                    <textarea class="form-control" ng-model="setWeiboUser.user_explain"  placeholder="个人说明"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="offset-sm-2 col-sm-10">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                        </label>
-                                    </div>
+                                    <button class="btn btn-danger" ng-click="save()">提交修改</button>
                                 </div>
                             </div>
-                            <div class="form-group row">
-                                <div class="offset-sm-2 col-sm-10">
-                                    <button type="submit" class="btn btn-danger">Submit</button>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                     <!-- /.tab-pane -->
                 </div>

@@ -31,7 +31,12 @@ public class WeiboUserServiceImpl implements WeiboUserService {
 
     @Override
     public WeiboUser save(WeiboUser user) {
-        user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes(StandardCharsets.UTF_8)));
         return  weiboUserRepository.save(user);
+    }
+
+    @Override
+    public WeiboUser add(WeiboUser user) {
+        user.setPassword(DigestUtils.md5DigestAsHex(user.getPassword().getBytes(StandardCharsets.UTF_8)));
+        return save(user);
     }
 }
