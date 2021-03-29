@@ -23,9 +23,9 @@
     <div class="card-body register-card-body">
       <p class="login-box-msg">注册新会员</p>
 
-      <form action="./addUser" method="post">
+      <form action="./weiboUser/p/add" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="用户名">
+          <input type="text" class="form-control" name="username" placeholder="用户名">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -33,7 +33,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="昵称">
+          <input type="text" class="form-control" name="nickname" placeholder="昵称">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user-tag"></span>
@@ -41,7 +41,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="密码">
+          <input type="password" class="form-control" name="password" placeholder="密码">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -49,14 +49,14 @@
           </div>
         </div>
 
-      </form>
+
 
       <div class="social-auth-links text-center">
-        <a href="#" class="btn btn-block btn-primary">
+        <button type="submit"  class="btn btn-block btn-primary">
          注册
-        </a>
+        </button>
       </div>
-
+      </form>
       <a href="login.html" class="text-center">已经注册? 前往登陆</a>
     </div>
     <!-- /.form-box -->

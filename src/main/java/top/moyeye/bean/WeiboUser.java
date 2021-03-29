@@ -7,9 +7,8 @@ import lombok.ToString;
 import lombok.experimental.Accessors;
 
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Accessors(chain = true)
@@ -22,6 +21,7 @@ import java.util.Date;
 public class WeiboUser {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
 
     private String username;
@@ -39,4 +39,14 @@ public class WeiboUser {
     private String province;
 
     private String city;
+
+    private String email;
+
+    private String hobby;
+
+    private String job;
+
+    private String explain;
+
+    private Timestamp timestamp;
 }
