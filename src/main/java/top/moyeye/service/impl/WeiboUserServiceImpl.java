@@ -15,6 +15,7 @@ public class WeiboUserServiceImpl implements WeiboUserService {
 
     @Autowired
     WeiboUserRepository weiboUserRepository;
+
     @Override
     public WeiboUser findByName(String name) {
       return   weiboUserRepository.findByUsername(name);

@@ -49,9 +49,9 @@ public class WeiboUser {
 
     private String job;
 
-    private String user_explain;
+    private String userExplain;
 
-    private String user_logo;
+    private String userLogo;
 
     @JsonFormat(pattern = DEFAULT_TIME_PATTERN, timezone="GMT+8")
     private Timestamp createTime;
