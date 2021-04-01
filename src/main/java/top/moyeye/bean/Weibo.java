@@ -1,6 +1,7 @@
 package top.moyeye.bean;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,7 +26,10 @@ public class Weibo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer weiboId;
 
-    private Integer userId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private WeiboUser weiboUser;
 
     @JsonFormat(pattern = DEFAULT_TIME_PATTERN, timezone="GMT+8")
     private Timestamp postTime;
