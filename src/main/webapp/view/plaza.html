@@ -1,0 +1,86 @@
+<div class="row" >
+    <div class="card col-md-12">
+        <div class="card-header p-2">
+            <ul class="nav nav-pills">
+                <!--                <li class="nav-item"><a class="nav-link active"  ng-click="cardSwitch = 'activity'">动态</a></li>-->
+            </ul>
+        </div><!-- /.card-header -->
+        <div class="card-body">
+            <div class="tab-content ">
+                <!-- Post -->
+                <div class="post" ng-repeat="wo in weiboList">
+                    <div class="user-block">
+                        <img  class="img-circle" ng-src="{{wo.weiboUser.userLogo}}" alt="头像">
+                        <span class="username">
+                          <a href="#">{{wo.weiboUser.nickname}}</a>
+                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                        </span>
+                        <span class="description">{{wo.postTime}}</span>
+                    </div>
+                    <p>
+                        {{wo.content}}
+                    </p>
+
+                    <!--                        <div class="row">-->
+                    <!--                            <div class="col-sm-4">-->
+                    <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="col-sm-4">-->
+                    <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="col-sm-4">-->
+                    <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="row">-->
+                    <!--                            <div class="col-sm-4">-->
+                    <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="col-sm-4">-->
+                    <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="col-sm-4">-->
+                    <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <!--                        <div class="row">-->
+                    <!--                            <div class="col-sm-4">-->
+                    <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="col-sm-4">-->
+                    <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                    <!--                            </div>-->
+                    <!--                            <div class="col-sm-4">-->
+                    <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                    <!--                            </div>-->
+                    <!--                        </div>-->
+                    <p>
+                        <a href="javascript:void(0)" ng-show="! wo.favorite" ng-click ="addFavorite(wo)" class="link-black text-sm mr-2"><i class="fas fa-star mr-1"></i> 收藏</a>
+                        <a href="javascript:void(0)" ng-show="wo.favorite" ng-click ="deleteFavorite(wo)" class="link-black text-sm mr-2"><i class="fas fa-star mr-1"></i> 取消收藏</a>
+
+                        <a href="javascript:void(0)" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> 赞</a>
+                        <span class="float-right">
+                          <a href="#" class="link-black text-sm">
+                            <i class="far fa-comments mr-1"></i> 评论 (5)
+                          </a>
+                        </span>
+                    </p>
+
+                    <form class="form-horizontal">
+                        <div class="input-group input-group-sm mb-0">
+                            <input class="form-control form-control-sm" placeholder="回复内容">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-danger">发送</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.post -->
+            </div>
+            <!-- /.tab-content -->
+        </div><!-- /.card-body -->
+        <tm-pagination  conf="paginationConf"></tm-pagination>
+    </div>
+    <!-- /.nav-tabs-custom -->
+
+</div>

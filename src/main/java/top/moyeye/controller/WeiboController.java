@@ -1,13 +1,17 @@
 package top.moyeye.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import top.moyeye.bean.common.PageResult;
 import top.moyeye.bean.Weibo;
 import top.moyeye.service.WeiboService;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 @Controller
@@ -31,8 +35,8 @@ public class WeiboController extends BaseController{
 
     @RequestMapping("p/findAll")
     @ResponseBody
-    public List<Weibo> findAll(@RequestBody Weibo weibo){
-        return weiboService.findAll(weibo);
+    public PageResult findAll(@RequestBody Weibo weibo, int page, int rows){
+        return weiboService.findAll(weibo,(isLogin() ? currentUser() : null), PageRequestOf(page, rows, Sort.by(Sort.Direction.DESC, "postTime")));
     }
 
 }

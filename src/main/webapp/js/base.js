@@ -20,8 +20,12 @@ var app = angular.module("moyeApp",['pagination' ,'ngRoute' ])
                 templateUrl: 'view/profile.html',
                 controller: 'profileController',
             })
+            .when('/plaza', {
+                templateUrl: 'view/plaza.html',
+                controller: 'plazaController',
+            })
             .otherwise({
-                redirectTo:  '/navigation'
+                redirectTo:  '/plaza'
             });
         // you might need to call $route.reload() if the route changed
         $route.reload();

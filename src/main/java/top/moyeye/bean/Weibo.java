@@ -1,7 +1,6 @@
 package top.moyeye.bean;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -59,4 +58,11 @@ public class Weibo {
     private Integer likeId;
 
     private Integer favoriteId;
+
+    /**
+     * 是否收藏
+     */
+    @Transient
+    private boolean favorite;
+
 }

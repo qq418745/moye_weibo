@@ -1,15 +1,18 @@
 package top.moyeye.service;
 
+import org.springframework.data.domain.PageRequest;
+import top.moyeye.bean.WeiboUser;
+import top.moyeye.bean.common.PageResult;
 import top.moyeye.bean.Weibo;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface WeiboService {
 
     Weibo save(Weibo weibo);
 
-    List<Weibo> findAll(Weibo weibo);
+    PageResult findAll(Weibo weibo, WeiboUser user, PageRequest pageRequest);
+
 
     List<Weibo> findAllByUser(Weibo weibo);
 }

@@ -18,10 +18,21 @@ import javax.persistence.*;
 public class Favorite {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Integer favoriteId;
+    private  String favoriteId;
+
+    private  Integer weiboId;
 
     private  Integer userId;
 
     private  String createTime;
+
+    public void setFavoriteId(Weibo weibo,WeiboUser user) {
+        this.favoriteId = weibo.getWeiboId()+ "_"+ user.getUserId() + "_" +System.currentTimeMillis();
+    }
+    public Favorite  buildFavorite(Weibo weibo, WeiboUser user){
+        this.favoriteId = weibo.getWeiboId()+ "_"+ user.getUserId() + "_" +System.currentTimeMillis();
+        this.weiboId =  weibo.getWeiboId();
+        this.userId =  user.getUserId();
+        return this;
+    }
 }

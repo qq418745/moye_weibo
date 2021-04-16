@@ -2,15 +2,18 @@ package top.moyeye.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import top.moyeye.bean.WeiboUser;
+import top.moyeye.bean.common.PageResult;
 import top.moyeye.bean.Weibo;
 import top.moyeye.dao.WeiboRepository;
+import top.moyeye.service.FavoriteService;
 import top.moyeye.service.WeiboService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class WeiboServiceImpl implements WeiboService {
@@ -18,19 +21,25 @@ public class WeiboServiceImpl implements WeiboService {
     @Autowired
     WeiboRepository weiboRepository;
 
+    @Autowired
+    FavoriteService favoriteService;
+
     @Override
     public Weibo save(Weibo weibo) {
         return weiboRepository.save(weibo);
     }
 
     @Override
-    public List<Weibo> findAll(Weibo weibo) {
-        return weiboRepository.findAll();
+    public PageResult findAll(Weibo weibo, WeiboUser user, PageRequest pageRequest) {
+        Page<Weibo> all = weiboRepository.findAll(pageRequest);
+        if(user != null){
+            favoriteService.isFavorite(all.getContent(),user);
+        }
+        return  new PageResult(all);
     }
 
     @Override
     public List<Weibo> findAllByUser(Weibo weibo) {
         return weiboRepository.findByWeiboUser(weibo.getWeiboUser(), PageRequest.of(0,9999, Sort.by(Sort.Direction.DESC, "postTime")));
-
     }
 }

@@ -10,5 +10,18 @@ app.controller("baseController", function ($scope) {
             $scope.reloadList();// 重新加载列表
         }
     };
+    $scope.SUCCESS_CODE = 0;
+    $scope.ERROR_CODE = -1;
+    $scope.reloadList = function () {
+        $scope.search($scope.paginationConf.currentPage, $scope.paginationConf.itemsPerPage);
+    }
+    $scope.pagingQuery = function (url, page, rows){
+        if(page && rows){
+            return url + "?page=" + page +'&rows='+rows
+        }
+        return url + "?page=" +  $scope.paginationConf.currentPage +'&rows='+ $scope.paginationConf.itemsPerPage
+    }
+
+
 
 })

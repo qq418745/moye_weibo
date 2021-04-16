@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="./plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="./dist/css/adminlte.min.css">
   <link rel="stylesheet" href="./plugins/summernote/summernote-bs4.css">
+  <!-- 分页的css -->
   <link rel="stylesheet" href="plugins/angularjs/pagination.css">
   <script type="text/javascript" src="plugins/angularjs/angular.min.js"></script>
   <script type="text/javascript" src="plugins/angularjs/angular-route.min.js"></script>
@@ -39,7 +40,7 @@
             <a href="#navigation" class="nav-link">首页</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">广场</a>
+            <a href="#plaza" class="nav-link">广场</a>
           </li>
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">搜索选项</a>
@@ -91,6 +92,7 @@
 
       <!-- Right navbar links -->
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+        <li  class="nav-item"><a   class="nav-link" href="/logout">退出登陆</a></li>
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
@@ -148,6 +150,7 @@
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
           </div>
+
         </li>
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">
@@ -180,6 +183,7 @@
           <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
               class="fas fa-th-large"></i></a>
         </li>
+
       </ul>
     </div>
   </nav>
@@ -192,12 +196,12 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark"> 你回来啦!  <small>有一点点想你呢..</small></h1>
+<!--            <h1 class="m-0 text-dark"> 你回来啦!  <small>有一点点想你呢..</small></h1>-->
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">关闭</a></li>
-              <li class="breadcrumb-item"><a href="/logout">退出登陆</a></li>
+<!--              <li class="breadcrumb-item"><a href="#">关闭</a></li>-->
+
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -369,6 +373,7 @@
 <script type="text/javascript" src="js/controller/navigationController.js"></script>
 <script type="text/javascript" src="js/controller/homeController.js"></script>
 <script type="text/javascript" src="js/controller/profileController.js"></script>
+<script type="text/javascript" src="js/controller/plazaController.js"></script>
 
 <script type="text/javascript" src="js/service/httpService.js"></script>
 <!-- AdminLTE for demo purposes -->
