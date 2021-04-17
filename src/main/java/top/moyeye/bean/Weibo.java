@@ -65,4 +65,10 @@ public class Weibo {
     @Transient
     private boolean favorite;
 
+    /**
+     * 是否点赞
+     */
+    @Transient
+    private boolean like;
+
 }

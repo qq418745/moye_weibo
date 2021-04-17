@@ -58,7 +58,8 @@
                         <a href="javascript:void(0)" ng-show="! wo.favorite" ng-click ="addFavorite(wo)" class="link-black text-sm mr-2"><i class="fas fa-star mr-1"></i> 收藏</a>
                         <a href="javascript:void(0)" ng-show="wo.favorite" ng-click ="deleteFavorite(wo)" class="link-black text-sm mr-2"><i class="fas fa-star mr-1"></i> 取消收藏</a>
 
-                        <a href="javascript:void(0)" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> 赞</a>
+                        <a href="javascript:void(0)"  ng-show="! wo.like" ng-click ="addLike(wo)" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> 赞</a>
+                        <a href="javascript:void(0)"  ng-show="wo.like" ng-click ="deleteLike(wo)"  class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> 取消赞</a>
                         <span class="float-right">
                           <a href="#" class="link-black text-sm">
                             <i class="far fa-comments mr-1"></i> 评论 (5)

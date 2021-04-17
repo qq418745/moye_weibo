@@ -6,6 +6,6 @@ import top.moyeye.bean.Favorite;
 import java.util.List;
 
 
-public interface FavoriteRepository  extends JpaRepository<Favorite, Integer> {
+public interface FavoriteRepository  extends JpaRepository<Favorite, String> {
     List<Favorite> findByUserId(Integer userId);
 }

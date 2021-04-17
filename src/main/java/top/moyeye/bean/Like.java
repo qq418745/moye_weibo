@@ -18,10 +18,18 @@ import javax.persistence.*;
 public class Like {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Integer likeId;
+    private  String likeId;
 
     private  Integer userId;
 
+    private  Integer weiboId;
+
     private  String createTime;
+
+    public Like  buildLike(Weibo weibo, WeiboUser user){
+        this.likeId = weibo.getWeiboId()+ "_"+ user.getUserId() + "_" +System.currentTimeMillis();
+        this.weiboId =  weibo.getWeiboId();
+        this.userId =  user.getUserId();
+        return this;
+    }
 }

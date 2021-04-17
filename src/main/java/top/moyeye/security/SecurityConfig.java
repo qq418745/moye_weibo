@@ -23,11 +23,11 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 @Configuration
 public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
-//    @Autowired
-//    private AuthenticationEntryPoint authenticationEntryPoint;
+    @Autowired
+    private AuthenticationEntryPoint authenticationEntryPoint;
 
-//    @Autowired
-//    private AjaxRequestMatcher ajaxRequestMatcher;
+    @Autowired
+    private AjaxRequestMatcher ajaxRequestMatcher;
     @Autowired
     private  UserNameDetailsService userNameDetailsService;
 
@@ -62,7 +62,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
         http.logout().logoutSuccessUrl("/"); //注销成功后，回到首页
         http.rememberMe();
-      //  http.exceptionHandling().defaultAuthenticationEntryPointFor(authenticationEntryPoint, ajaxRequestMatcher);
+        http.exceptionHandling().defaultAuthenticationEntryPointFor(authenticationEntryPoint, ajaxRequestMatcher);
 
     }
 
