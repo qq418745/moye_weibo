@@ -1,6 +1,7 @@
 package top.moyeye.bean;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 import static top.moyeye.consts.IConst.DEFAULT_TIME_PATTERN;
 
@@ -70,5 +72,11 @@ public class Weibo {
      */
     @Transient
     private boolean like;
+
+    /**
+     * 评论
+     */
+    @Transient
+    private List<Comment> comments;
 
 }

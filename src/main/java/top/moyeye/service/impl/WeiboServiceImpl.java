@@ -10,6 +10,7 @@ import top.moyeye.bean.WeiboUser;
 import top.moyeye.bean.common.PageResult;
 import top.moyeye.bean.Weibo;
 import top.moyeye.dao.WeiboRepository;
+import top.moyeye.service.CommentService;
 import top.moyeye.service.FavoriteService;
 import top.moyeye.service.LikeService;
 import top.moyeye.service.WeiboService;
@@ -28,6 +29,9 @@ public class WeiboServiceImpl implements WeiboService {
     @Autowired
     LikeService likeService;
 
+    @Autowired
+    CommentService commentService;
+
     @Override
     public Weibo save(Weibo weibo) {
         return weiboRepository.save(weibo);
@@ -41,11 +45,12 @@ public class WeiboServiceImpl implements WeiboService {
             favoriteService.isFavorite(all.getContent(),user);
             likeService.isLike(all.getContent(),user);
         }
+        commentService.setWeiboComment(all.getContent());
         return  new PageResult(all);
     }
 
     @Override
     public List<Weibo> findAllByUser(Weibo weibo) {
-        return weiboRepository.findByWeiboUser(weibo.getWeiboUser(), PageRequest.of(0,9999, Sort.by(Sort.Direction.DESC, "postTime")));
+        return  commentService.setWeiboComment( weiboRepository.findByWeiboUser(weibo.getWeiboUser(), PageRequest.of(0, 9999, Sort.by(Sort.Direction.DESC, "postTime"))));
     }
 }

@@ -10,8 +10,7 @@ import top.moyeye.bean.common.PageResult;
 import top.moyeye.bean.Weibo;
 import top.moyeye.service.WeiboService;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 import java.util.List;
 
 @Controller

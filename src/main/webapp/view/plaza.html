@@ -13,7 +13,7 @@
                         <img  class="img-circle" ng-src="{{wo.weiboUser.userLogo}}" alt="头像">
                         <span class="username">
                           <a href="#">{{wo.weiboUser.nickname}}</a>
-                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+<!--                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>-->
                         </span>
                         <span class="description">{{wo.postTime}}</span>
                     </div>
@@ -60,28 +60,44 @@
 
                         <a href="javascript:void(0)"  ng-show="! wo.like" ng-click ="addLike(wo)" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> 赞</a>
                         <a href="javascript:void(0)"  ng-show="wo.like" ng-click ="deleteLike(wo)"  class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> 取消赞</a>
-                        <span class="float-right">
-                          <a href="#" class="link-black text-sm">
-                            <i class="far fa-comments mr-1"></i> 评论 (5)
-                          </a>
-                        </span>
-                    </p>
 
-                    <form class="form-horizontal">
-                        <div class="input-group input-group-sm mb-0">
-                            <input class="form-control form-control-sm" placeholder="回复内容">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-danger">发送</button>
+                        <span class="float-right">
+                                <a href="javascript:void(0)"   ng-init="wo.comments.length > 0 ? wo.showComment = wo.weiboId : wo.showComment = 0"  ng-click="wo.showComment === wo.weiboId ?  wo.showComment = 0 : wo.showComment = wo.weiboId" class="link-black text-sm">
+                                  <i class="far fa-comments mr-1"></i> 评论{{'('+ wo.comments.length +')'}}
+                               </a>
+                        </span>
+
+                    </p>
+                    <div class="card-footer card-comments" ng-show="wo.showComment === wo.weiboId">
+                        <div class="card-comment" ng-repeat="comment in wo.comments" >
+                            <!-- User image -->
+                            <img class="img-circle img-sm" ng-src="{{comment.weiboUser.userLogo}}" alt="">
+                            <div class="comment-text">
+                                <span class="username">
+                                  {{comment.weiboUser.nickname}}
+                                  <span class="text-muted float-right">{{comment.createTime}}</span>
+                                </span><!-- /.username -->
+                              {{comment.commentText}}
                             </div>
+                            <!-- /.comment-text -->
                         </div>
-                    </form>
+
+                            <div class="input-group input-group-sm mb-0">
+                                <input ng-model="commentText" class="form-control form-control-sm" placeholder="说点什么吧！">
+                                <div class="input-group-append">
+                                    <button type="button" ng-click="sendComment(commentText, wo)" class="btn btn-danger">发送</button>
+                                </div>
+                            </div>
+
+                    </div>
                 </div>
                 <!-- /.post -->
             </div>
             <!-- /.tab-content -->
         </div><!-- /.card-body -->
+
+
         <tm-pagination  conf="paginationConf"></tm-pagination>
     </div>
     <!-- /.nav-tabs-custom -->
-
 </div>

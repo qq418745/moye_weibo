@@ -7,5 +7,7 @@ app.service('httpService',function($http){
     this.postJson = function(url,entity){
         return $http.post(url, entity, jsonConfig);
     };
-
+    this.post = function(url,entity){
+        return $http.post(url, entity);
+    };
 })
