@@ -87,7 +87,6 @@
                         <a href="javascript:void(0)"  ng-show="wo.like" ng-click ="deleteLike(wo)"  class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> 取消赞</a>
 
 
-
                         <span class="float-right">
                                 <a href="javascript:void(0)"   ng-init="wo.comments.length > 0 ? wo.showComment = wo.weiboId : wo.showComment = 0"  ng-click="wo.showComment === wo.weiboId ?  wo.showComment = 0 : wo.showComment = wo.weiboId" class="link-black text-sm">
                                   <i class="far fa-comments mr-1"></i> 评论{{'('+ wo.comments.length +')'}}
