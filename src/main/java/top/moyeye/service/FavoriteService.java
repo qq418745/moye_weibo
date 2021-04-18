@@ -13,4 +13,6 @@ public interface FavoriteService {
     CommonResult delete(Weibo weibo, WeiboUser currentUser);
 
     List<Weibo> isFavorite(List<Weibo> weiboList, WeiboUser currentUser);
+
+    List<Weibo> findByUser(WeiboUser currentUser);
 }

@@ -9,7 +9,10 @@ import top.moyeye.bean.common.CommonResult;
 import top.moyeye.dao.CommentRepository;
 import top.moyeye.dao.WeiboRepository;
 import top.moyeye.service.CommentService;
+import top.moyeye.service.FavoriteService;
+import top.moyeye.service.LikeService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -21,6 +24,15 @@ public class CommentServiceImpl implements CommentService {
 
     @Autowired
     WeiboRepository weiboRepository;
+
+    @Autowired
+    FavoriteService favoriteService;
+
+    @Autowired
+    LikeService likeService;
+
+    @Autowired
+    CommentService commentService;
 
     @Override
     public CommonResult delete(Integer commentId) {
@@ -38,6 +50,18 @@ public class CommentServiceImpl implements CommentService {
     public List<Weibo> setWeiboComment(List<Weibo> weibos) {
         weibos.forEach(w->w.setComments(  commentRepository.findByWeiboId(w.getWeiboId())));
         return weibos;
+    }
+
+    @Override
+    public List<Weibo> findByUser(WeiboUser currentUser) {
+        ArrayList<Weibo> weibos = new ArrayList<>();
+        commentRepository.findByWeiboUser(currentUser.getUserId()).forEach(s->{
+            weibos.add(weiboRepository.findById(s.getWeiboId()).get());
+        });
+        commentService.setWeiboComment(weibos);
+        favoriteService.isFavorite(weibos,currentUser);
+        likeService.isLike(weibos,currentUser);
+        return null;
     }
 
 

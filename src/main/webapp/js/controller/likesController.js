@@ -1,10 +1,11 @@
-app.controller('homeController' ,function($scope, $controller,httpService){
+app.controller('likesController' ,function($scope, $controller,httpService){
 
     $controller('baseController',{$scope:$scope});//继承
     $scope.weiboList = {};
 
     $scope.weiboEntity = {};
     $scope.weiboEntity.content = "";
+    $scope.paginationConf.itemsPerPag = 9999;
 
     /**
      * 发微博
@@ -26,7 +27,7 @@ app.controller('homeController' ,function($scope, $controller,httpService){
 
 
     $scope.search = function (page, rows) {
-        httpService.postJson(  (page && rows ?  $scope.pagingQuery("../weibo/currentUser/findAll", page, rows) : $scope.pagingQuery("../weibo/currentUser/findAll")),{}) .success(function (response){
+        httpService.postJson(  (page && rows ?  $scope.pagingQuery("../weibo/currentUser/findByLike", page, rows) : $scope.pagingQuery("../weibo/currentUser/findByLike")),{}) .success(function (response){
             $scope.paginationConf.totalItems=response.total
             $scope.weiboList = response.rows;
         })

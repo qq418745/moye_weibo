@@ -10,10 +10,18 @@ app.config(function($provide, $routeProvider) {
                 templateUrl: 'view/home.html',
                 controller: 'homeController',
             })
-            // .when('/navigation', {
-            //     templateUrl: 'view/navigation.html',
-            //     controller: 'navigationController',
-            // })
+            .when('/publicProfile', {
+                templateUrl: 'view/publicProfile.html',
+                controller: 'publicProfileController',
+            })
+            .when('/star', {
+                templateUrl: 'view/star.html',
+                controller: 'starController',
+            })
+            .when('/like', {
+                templateUrl: 'view/like.html',
+                controller: 'likesController',
+            })
             .when('/profile', {
                 templateUrl: 'view/profile.html',
                 controller: 'profileController',

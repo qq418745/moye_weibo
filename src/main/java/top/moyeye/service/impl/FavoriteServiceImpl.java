@@ -7,10 +7,13 @@ import top.moyeye.bean.Weibo;
 import top.moyeye.bean.WeiboUser;
 import top.moyeye.bean.common.CommonResult;
 import top.moyeye.dao.FavoriteRepository;
+import top.moyeye.dao.WeiboRepository;
+import top.moyeye.service.CommentService;
 import top.moyeye.service.FavoriteService;
-import top.moyeye.service.fw.FwService;
+import top.moyeye.service.LikeService;
 import top.moyeye.service.fw.Processor;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -21,7 +24,16 @@ public class FavoriteServiceImpl implements FavoriteService {
     FavoriteRepository favoriteRepository;
 
     @Autowired
-    FwService fwService;
+    WeiboRepository weiboRepository;
+
+    @Autowired
+    FavoriteService favoriteService;
+
+    @Autowired
+    LikeService likeService;
+
+    @Autowired
+    CommentService commentService;
 
     @Override
     public CommonResult save(Weibo weibo, WeiboUser currentUser) {
@@ -53,5 +65,17 @@ public class FavoriteServiceImpl implements FavoriteService {
        //给微博加上是否收藏
         weiboList.forEach(w->w.setFavorite(m.containsKey(w.getWeiboId())));
         return weiboList;
+    }
+
+    @Override
+    public List<Weibo> findByUser(WeiboUser currentUser) {
+        ArrayList<Weibo> weibos = new ArrayList<>();
+        favoriteRepository.findByUserId(currentUser.getUserId()).forEach(s->{
+            weibos.add(weiboRepository.findById(s.getWeiboId()).get());
+        });
+        commentService.setWeiboComment(weibos);
+        favoriteService.isFavorite(weibos,currentUser);
+        likeService.isLike(weibos,currentUser);
+        return weibos;
     }
 }

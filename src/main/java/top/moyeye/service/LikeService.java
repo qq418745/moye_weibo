@@ -13,4 +13,6 @@ public interface LikeService {
     CommonResult delete(Weibo weibo, WeiboUser currentUser);
 
     List<Weibo> isLike(List<Weibo> weiboList, WeiboUser currentUser);
+
+    List<Weibo> findByUser(WeiboUser currentUser);
 }

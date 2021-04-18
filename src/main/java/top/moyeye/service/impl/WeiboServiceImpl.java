@@ -50,7 +50,15 @@ public class WeiboServiceImpl implements WeiboService {
     }
 
     @Override
-    public List<Weibo> findAllByUser(Weibo weibo) {
-        return  commentService.setWeiboComment( weiboRepository.findByWeiboUser(weibo.getWeiboUser(), PageRequest.of(0, 9999, Sort.by(Sort.Direction.DESC, "postTime"))));
+    public PageResult findAllByUser(Weibo setWeiboUser, PageRequest postTime) {
+        Page<Weibo> byWeiboUser = weiboRepository.findByWeiboUser(setWeiboUser.getWeiboUser(), postTime);
+        commentService.setWeiboComment(byWeiboUser.getContent());
+        favoriteService.isFavorite(byWeiboUser.getContent(),setWeiboUser.getWeiboUser());
+        likeService.isLike(byWeiboUser.getContent(),setWeiboUser.getWeiboUser());
+        return  new PageResult(byWeiboUser);
     }
+
+
+
+
 }

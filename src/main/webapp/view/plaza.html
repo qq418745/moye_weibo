@@ -2,7 +2,7 @@
     <div class="card col-md-12">
         <div class="card-header p-2">
             <ul class="nav nav-pills">
-                <!--                <li class="nav-item"><a class="nav-link active"  ng-click="cardSwitch = 'activity'">动态</a></li>-->
+
             </ul>
         </div><!-- /.card-header -->
         <div class="card-body">
@@ -12,7 +12,7 @@
                     <div class="user-block">
                         <img  class="img-circle" ng-src="{{wo.weiboUser.userLogo}}" alt="头像">
                         <span class="username">
-                          <a href="#">{{wo.weiboUser.nickname}}</a>
+                          <a href="javascript:void(0)" ng-click="toFrofile(wo.weiboUser)">{{wo.weiboUser.nickname}}</a>
 <!--                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>-->
                         </span>
                         <span class="description">{{wo.postTime}}</span>

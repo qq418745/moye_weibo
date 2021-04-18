@@ -16,4 +16,5 @@ public interface CommentService {
 
      List<Weibo> setWeiboComment(List<Weibo> weibos);
 
+    List<Weibo> findByUser(WeiboUser currentUser);
 }
