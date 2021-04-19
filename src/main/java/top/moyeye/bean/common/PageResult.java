@@ -5,6 +5,9 @@ import org.springframework.data.domain.Page;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * 分页数据通用返回信息
+ */
 public class PageResult implements Serializable {
     private long total; // 总记录数
     private List<?> rows; // 返回每页的数据的集合

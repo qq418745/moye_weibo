@@ -10,14 +10,18 @@ import top.moyeye.bean.common.CommonResult;
 import top.moyeye.service.LikeService;
 
 /**
- * 微博收藏
+ * 微博点赞
  */
 @Controller
 @RequestMapping("like")
 public class LikeController extends BaseController{
 
+    /**
+     *注入点赞服务
+     */
     @Autowired
     LikeService likeService;
+
     /**
      * 点赞添加
      * @param weibo

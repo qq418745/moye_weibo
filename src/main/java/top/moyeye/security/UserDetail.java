@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.User;
 import java.util.Collection;
 
 /**
- * hjc_cms
+ * 登陆类
  * Mr.liuchengming
  * 2020-01-14 21:19
  **/

@@ -11,8 +11,6 @@ import top.moyeye.dao.WeiboRepository;
 import top.moyeye.service.CommentService;
 import top.moyeye.service.FavoriteService;
 import top.moyeye.service.LikeService;
-import top.moyeye.service.fw.Processor;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

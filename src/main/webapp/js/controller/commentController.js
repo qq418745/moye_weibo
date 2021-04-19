@@ -1,11 +1,11 @@
 app.controller('commentController' ,function($scope, $controller,httpService){
 
     $controller('baseController',{$scope:$scope});//继承
-    $scope.weiboList = {};
 
-    $scope.weiboEntity = {};
-    $scope.weiboEntity.content = "";
-    $scope.paginationConf.itemsPerPag = 9999;
+    $scope.weiboList = {}; //微博数据
+    $scope.weiboEntity = {}; //微博对象
+    $scope.weiboEntity.content = ""; //微博对象内容
+    $scope.paginationConf.itemsPerPag = 9999; //分页信息
 
     /**
      * 发微博
@@ -25,7 +25,11 @@ app.controller('commentController' ,function($scope, $controller,httpService){
         })
     }
 
-
+    /**
+     * 搜当前用户微博
+     * @param page
+     * @param rows
+     */
     $scope.search = function (page, rows) {
         httpService.postJson(  (page && rows ?  $scope.pagingQuery("../weibo/currentUser/findByLike", page, rows) : $scope.pagingQuery("../weibo/currentUser/findByLike")),{}) .success(function (response){
             $scope.paginationConf.totalItems=response.total
@@ -99,6 +103,7 @@ app.controller('commentController' ,function($scope, $controller,httpService){
             }
         })
     };
+
     /**
      * 去用户主页
      * @param user

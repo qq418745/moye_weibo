@@ -15,7 +15,7 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 
 
 /**
- * hjc_cms
+ * SpringSecurity配置
  * Mr.liuchengming
  * 2019-12-31 17:17
  **/
@@ -28,11 +28,16 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private AjaxRequestMatcher ajaxRequestMatcher;
+
     @Autowired
     private  UserNameDetailsService userNameDetailsService;
 
 
-
+    /**
+     * 放行路径配置
+     * @param http
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
@@ -63,9 +68,11 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
         http.logout().logoutSuccessUrl("/"); //注销成功后，回到首页
         http.rememberMe();
+        //401配置
         http.exceptionHandling().defaultAuthenticationEntryPointFor(authenticationEntryPoint, ajaxRequestMatcher);
 
     }
+
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {

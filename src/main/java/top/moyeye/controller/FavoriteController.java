@@ -16,9 +16,12 @@ import top.moyeye.service.FavoriteService;
 @Controller
 @RequestMapping("favorite")
 public class FavoriteController extends BaseController{
-
+    /**
+     * 注入收藏服务
+     */
     @Autowired
     FavoriteService favoriteService;
+
     /**
      * 收藏添加
      * @param weibo

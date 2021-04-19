@@ -2,12 +2,12 @@ app.controller('profileController' ,function($scope,$controller,httpService){
 
     $controller('baseController',{$scope:$scope});//继承
 
-    $scope.weiboUser = {};
-    $scope.setWeiboUser = {};
-    $scope.followList = [];
-    $scope.unFollowList = [];
-    $scope.weiboList = []
-    $scope.cardSwitch = 'activity';
+    $scope.weiboUser = {}; //微博用户
+    $scope.setWeiboUser = {}; //set微博用户对象
+    $scope.followList = []; //粉丝列表
+    $scope.unFollowList = []; //关注列表
+    $scope.weiboList = [] //微博列表
+    $scope.cardSwitch = 'activity'; //切换
 
     /**
      * 当前用户信息
@@ -40,9 +40,11 @@ app.controller('profileController' ,function($scope,$controller,httpService){
         })
     }
 
+    //执行
     $scope.getFollow();
     $scope.getUserInfo();
     $scope.searchWeiboList();
+
     /**
      * 用户信息保存
      */

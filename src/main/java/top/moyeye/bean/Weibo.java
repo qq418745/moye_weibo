@@ -23,20 +23,34 @@ import static top.moyeye.consts.IConst.DEFAULT_TIME_PATTERN;
 @Table(name = "t_weibo")
 public class Weibo {
 
+    /**
+     * 微博id
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer weiboId;
 
-
+    /**
+     * 微博用户
+     */
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private WeiboUser weiboUser;
 
+    /**
+     * 创建时间
+     */
     @JsonFormat(pattern = DEFAULT_TIME_PATTERN, timezone="GMT+8")
     private Timestamp postTime;
 
+    /**
+     * 微博内容
+     */
     private String content;
 
+    /**
+     * 图片
+     */
     private String pic1;
 
     private String pic2;

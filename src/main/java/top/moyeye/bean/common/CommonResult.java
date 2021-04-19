@@ -2,6 +2,10 @@ package top.moyeye.bean.common;
 
 import lombok.Data;
 
+/**
+ * 通用返回类
+ * @param <T>
+ */
 @Data
 public class CommonResult<T> {
 

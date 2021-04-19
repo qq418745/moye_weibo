@@ -6,11 +6,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.moyeye.dao.WeiboRepository;
 import top.moyeye.dao.WeiboUserRepository;
-
 import java.util.List;
-import java.util.Map;
 
-
+/**
+ * 微博搜索接口 公开
+ */
 @Controller
 @RequestMapping("weibo/p")
 public class WeiboSerarchController extends BaseController{

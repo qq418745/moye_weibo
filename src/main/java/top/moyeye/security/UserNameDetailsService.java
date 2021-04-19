@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 密码校验入口
  * Mr.coala
  * 2020-01-02 14:58
  **/

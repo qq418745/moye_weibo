@@ -20,12 +20,17 @@ import java.util.List;
 @Controller
 @RequestMapping("follow")
 public class FollowController extends BaseController{
-
+    /**
+     * 注入关注服务
+     */
     @Autowired
     FollowRepository followRepository;
-
+    /**
+     * 注入微博用户服务
+     */
     @Autowired
     WeiboUserRepository weiboUserRepository;
+
     /**
      * 添加关注
      * @param id

@@ -10,11 +10,23 @@ app.controller("baseController", function ($scope) {
             $scope.reloadList();// 重新加载列表
         }
     };
-    $scope.SUCCESS_CODE = 0;
-    $scope.ERROR_CODE = -1;
+
+    $scope.SUCCESS_CODE = 0; //成功码
+    $scope.ERROR_CODE = -1; //失败码
+
+    /**
+     * 重载页面
+     */
     $scope.reloadList = function () {
         $scope.search($scope.paginationConf.currentPage, $scope.paginationConf.itemsPerPage);
     }
+    /**
+     * 分页信息拼接工具
+     * @param url
+     * @param page
+     * @param rows
+     * @returns {string}
+     */
     $scope.pagingQuery = function (url, page, rows){
         if(page && rows){
             return url + "?page=" + page +'&rows='+rows

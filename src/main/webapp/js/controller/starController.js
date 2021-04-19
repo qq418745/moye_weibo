@@ -2,7 +2,6 @@ app.controller('starController' ,function($scope, $controller,httpService){
 
     $controller('baseController',{$scope:$scope});//继承
     $scope.weiboList = {};
-
     $scope.weiboEntity = {};
     $scope.weiboEntity.content = "";
     $scope.paginationConf.itemsPerPag = 9999;

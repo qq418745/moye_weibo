@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Primary;
 
 import javax.sql.DataSource;
 
+/**
+ * 配置类 数据源配置
+ */
 @Configuration
 public class DataSourceConfig {
     @Primary

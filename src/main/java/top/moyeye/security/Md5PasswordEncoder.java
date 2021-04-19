@@ -7,6 +7,7 @@ import org.springframework.util.DigestUtils;
 import java.nio.charset.StandardCharsets;
 
 /**
+ * 密码校验
  * Mr.coala
  * 2020-03-02 16:20
  **/

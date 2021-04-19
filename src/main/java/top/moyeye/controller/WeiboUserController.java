@@ -14,7 +14,9 @@ import top.moyeye.dao.WeiboUserRepository;
 
 import java.util.List;
 
-
+/**
+ * 微博用户
+ */
 @Controller
 @RequestMapping("weiboUser")
 public class WeiboUserController extends BaseController{

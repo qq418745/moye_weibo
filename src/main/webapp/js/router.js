@@ -1,3 +1,6 @@
+/**
+ * 路由配置
+ */
 app.config(function($provide, $routeProvider) {
     $provide.factory('$routeProvider', function () {
         return $routeProvider;

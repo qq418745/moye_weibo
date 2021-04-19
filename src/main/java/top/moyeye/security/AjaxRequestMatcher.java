@@ -6,8 +6,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * hjc-cms
- * info:
+ * info: json请求拦截
  * Mr.liuchengming
  * 2020-12-21 14:59
  **/

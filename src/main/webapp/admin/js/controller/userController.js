@@ -2,8 +2,8 @@ app.controller('userController' ,function($scope,$controller,httpService){
 
     $controller('baseController',{$scope:$scope});//继承
 
-    $scope.userList = {};
-    $scope.likeText = '';
+    $scope.userList = {}; //用户数据
+    $scope.likeText = ''; //搜索文本
 
     /**
      * 查询

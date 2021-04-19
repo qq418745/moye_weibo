@@ -2,8 +2,8 @@ app.controller('weiboController' ,function($scope,$controller,httpService){
 
     $controller('baseController',{$scope:$scope});//继承
 
-    $scope.weiboList = {};
-    $scope.likeText = '';
+    $scope.weiboList = {}; //微博数据
+    $scope.likeText = ''; //搜索文本
 
     /**
      * 查询微博
@@ -27,6 +27,7 @@ app.controller('weiboController' ,function($scope,$controller,httpService){
 
         })
     };
+
     /**
      * 删微博
      */

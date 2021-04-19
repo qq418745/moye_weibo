@@ -2,13 +2,15 @@ app.controller('publicProfileController' ,function($scope,$controller,httpServic
 
     $controller('baseController',{$scope:$scope});//继承
 
-    $scope.weiboUser = {};
-    $scope.setWeiboUser = {};
-    $scope.followList = [];
-    $scope.unFollowList = [];
-    $scope.weiboList = []
+    $scope.weiboUser = {}; //微博用户对象
+    $scope.setWeiboUser = {}; //et微博用户对象
+    $scope.followList = []; //粉丝列表
+    $scope.unFollowList = []; //关注列表
+    $scope.weiboList = [] //微博列表
     $scope.cardSwitch = 'activity';
-    $scope.userId = location.href.split("?")[1].split("=")[1];
+
+    $scope.userId = location.href.split("?")[1].split("=")[1]; //用户id
+
     /**
      * 当前用户信息
      */
@@ -19,6 +21,7 @@ app.controller('publicProfileController' ,function($scope,$controller,httpServic
             $scope.setWeiboUser = JSON.parse( JSON.stringify(user));
         });
     }
+
     /**
      * 关注和被关注的信息
      */
@@ -40,29 +43,40 @@ app.controller('publicProfileController' ,function($scope,$controller,httpServic
             $scope.weiboList = response.rows;
         })
     }
-
-
-
-
-
+    /**
+     * 获取用户关注
+     * @param id
+     */
     $scope.unFollow  = function (id) {
         httpService.postJson(  "../follow/currentUser/delete"+ '?id='+ id ,{}) .success(function (response){
             $scope.init();
         })
     }
 
+    /**
+     * 获取粉丝
+     * @param id
+     */
     $scope.follow  = function (id) {
         httpService.postJson(  "../follow/currentUser/add"+ '?id='+ id ,{}) .success(function (response){
             $scope.init();
         })
     }
 
-    $scope.isFollowTow = false;
+
+    $scope.isFollowTow = false; // 是否关注
+
+    /**
+     * 是否关注
+     * @param id
+     */
     $scope.isFollow = function (id) {
         httpService.postJson(  "../follow/p/isFollow"+ '?id='+ id ,{}) .success(function (response){
             $scope.isFollowTow  = response;
         })
     };
+
+
     $scope.init = function () {
         $scope.getFollow();
         $scope.getUserInfo();
@@ -71,9 +85,11 @@ app.controller('publicProfileController' ,function($scope,$controller,httpServic
     }
     $scope.init();
 
+
     $scope.search = function (){
         $scope.init();
     }
+
     /**
      * 发评论
      * @param commentText
