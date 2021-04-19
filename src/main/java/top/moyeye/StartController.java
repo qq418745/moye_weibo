@@ -11,6 +11,11 @@ public class StartController {
         return "redirect:/index.html";
     }
 
+    @RequestMapping("admin")
+    public String admin(){
+        return "redirect:/admin/admin.html";
+    }
+
 //    @RequestMapping("login")
 //    public String login(){
 //        return "redirect:./login.html";

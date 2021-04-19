@@ -91,8 +91,13 @@ public class WeiboController extends BaseController{
 
     @RequestMapping("p/findAll")
     @ResponseBody
-    public PageResult findAll(@RequestBody Weibo weibo, int page, int rows){
+    public PageResult pFindAll(@RequestBody Weibo weibo, int page, int rows){
         return weiboService.findAll(weibo,(isLogin() ? currentUser() : null), PageRequestOf(page, rows, Sort.by(Sort.Direction.DESC, "postTime")));
+    }
+    @RequestMapping("findAll")
+    @ResponseBody
+    public PageResult findAll(@RequestBody Weibo weibo, int page, int rows){
+        return weiboService.findAll(weibo, null, PageRequestOf(page, rows, Sort.by(Sort.Direction.DESC, "postTime")));
     }
     @RequestMapping("p/findAllByUserId")
     @ResponseBody

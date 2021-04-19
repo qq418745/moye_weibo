@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--此标签让360安全浏览器默认使用极速模式-->
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>莫耶 | 微博</title>
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+
+    <!-- 分页的css -->
+    <link rel="stylesheet" href="../plugins/angularjs/pagination.css">
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    <script type="text/javascript" src="../plugins/angularjs/angular-route.min.js"></script>
+</head>
+<body class="hold-transition layout-top-nav">
+<!--ng-controller="indexController"-->
+<div class="wrapper" ng-app="moyeApp"  ng-controller="navigationController" ng-cloak>
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+        <div class="container">
+            <a href="#javascript:void(0)" class="navbar-brand">
+                <img src="../img/moye_logo.png" alt="moye Logo" class="brand-image img-circle elevation-3"
+                     style="opacity: .8">
+                <span class="brand-text font-weight-light">微博管理后台</span>
+            </a>
+
+            <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+
+
+
+            </div>
+
+            <!-- Right navbar links -->
+            <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                <li  class="nav-item" ng-show="isLogin2"><a   class="nav-link" href="/logout">退出登陆</a></li>
+                <li  class="nav-item"  ng-show="!isLogin2"><a   class="nav-link" href="/login.html">前往登陆</a></li>
+
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)">
+                        <i class="far fa-bell"></i>
+                        <span class="badge badge-warning navbar-badge">0</span>
+                    </a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link"   href="javascript:void(0)"><i
+                            class="fas fa-th-large"></i></a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="javascript:void(0)" class="btn btn-primary btn-block mb-3">功能列表</a>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">应用</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body p-0">
+                                <ul class="nav nav-pills flex-column">
+                                    <li class="nav-item">
+                                        <a href="#weibo" class="nav-link">
+                                            <i class="far fa-star"></i> 微博管理
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#user" class="nav-link">
+                                            <i class="far fa-envelope"></i> 用户管理
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#comment" class="nav-link">
+                                            <i class="far fa-file-alt"></i> 评论管理
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+
+
+                    </div>
+                    <!-- /.col -->
+
+                    <!--页面内容-->
+                    <div class="col-md-9"  ng-view> </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+        <div class="p-3">
+            <h5>Title</h5>
+            <p>Sidebar content</p>
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>莫耶微博 &copy; 2021-2022 <a href="https://moyeye.top">coala.top</a>.</strong> All rights reserved.
+    </footer>
+</div>
+<!-- ../wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+
+<script src="../plugins/jquery/jquery.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../dist/js/adminlte.min.js"></script>
+<!-- 分页的js -->
+<script type="text/javascript" src="../plugins/angularjs/pagination.js"></script>
+<!-- 业务的js -->
+<script type="text/javascript" src="../js/base.js"></script>
+<script type="text/javascript" src="js/router.js"></script>
+<script type="text/javascript" src="js/config.js"></script>
+<script type="text/javascript" src="../js/controller/baseController.js"></script>
+<script type="text/javascript" src="js/controller/navigationController.js"></script>
+<script type="text/javascript" src="js/controller/userController.js"></script>
+<script type="text/javascript" src="js/controller/weiboController.js"></script>
+<script type="text/javascript" src="js/controller/commentController.js"></script>
+
+<script type="text/javascript" src="../js/service/httpService.js"></script>
+
+
+
+</body>
+</html>

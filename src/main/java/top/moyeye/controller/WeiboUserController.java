@@ -1,12 +1,18 @@
 package top.moyeye.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import top.moyeye.bean.WeiboUser;
+import top.moyeye.bean.common.CommonResult;
+import top.moyeye.bean.common.PageResult;
 import top.moyeye.dao.WeiboUserRepository;
+
+import java.util.List;
 
 
 @Controller
@@ -14,8 +20,12 @@ import top.moyeye.dao.WeiboUserRepository;
 public class WeiboUserController extends BaseController{
      final  String REDIRECT = "redirect:../../redirect.html";
 
-     @Autowired
+    /**
+     * 注入微博用户表对象
+     */
+    @Autowired
     WeiboUserRepository weiboUserRepository;
+
     /**
      * 个人主页
      * @return 个人主页
@@ -55,27 +65,77 @@ public class WeiboUserController extends BaseController{
         return "redirect:../../forgot-password.html?error=email";
     }
 
+    /**
+     * 获取当前用户
+     * @return
+     */
     @RequestMapping("currentWeiboUser")
     @ResponseBody
     public WeiboUser currentWeiboUser(){
          return  currentUser();
     }
+
+    /**
+     * 根据id获取当前用户
+     * @param id
+     * @return
+     */
     @RequestMapping("p/user")
     @ResponseBody
     public WeiboUser user(Integer id){
         return weiboUserRepository.findById(id).get();
     }
+
+    /**
+     * 是否登陆
+     * @return
+     */
     @RequestMapping("p/isLogin")
     @ResponseBody
     public boolean user(){
         return isLogin();
     }
 
+    /**
+     * 保存
+     * @param weiboUser
+     * @return
+     */
     @RequestMapping("save")
     @ResponseBody
     public WeiboUser save(@RequestBody WeiboUser weiboUser){
         return   weiboUserService.save(weiboUser);
     }
 
+    /**
+     * 查询用户
+     * @param userText
+     * @param page
+     * @param rows
+     * @return
+     */
+    @RequestMapping("findAll")
+    @ResponseBody
+    public PageResult findAll(String userText , int page, int rows) {
+        if(userText != null && (!userText.equals(""))){
+            List<WeiboUser> list = weiboUserRepository.findByNicknameLike("%" + userText + "%");
+            return   new PageResult( list.size(),list);
+        }
 
+        return   new PageResult( weiboUserRepository.findAll(PageRequestOf(page, rows, Sort.by(Sort.Direction.DESC, "createTime"))));
+
+    }
+
+    /**
+     * 删除用户
+     * @param id
+     * @return
+     */
+    @RequestMapping("delete")
+    @ResponseBody
+    public CommonResult delete(Integer id  ){
+        weiboUserRepository.deleteById(id);
+        return  new CommonResult();
+
+    }
 }
