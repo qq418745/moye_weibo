@@ -25,10 +25,10 @@
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
-                        <b>关注</b> <a class="float-right">{{followList.length}}</a>
+                        <b>关注</b> <a class="float-right">{{unFollowList.length}}</a>
                     </li>
                     <li class="list-group-item">
-                        <b>粉丝</b> <a class="float-right">{{unFollowList.length}}</a>
+                        <b>粉丝</b> <a class="float-right">{{followList.length}}</a>
                     </li>
                     <li class="list-group-item">
                         <b>微博</b> <a class="float-right">{{weiboList.length}}</a>
@@ -111,7 +111,7 @@
                                             </div>
                                             <p>
                                                 <a  href="{{'#search?type=HT' + '&text=' +  wo.topic}}"  ng-show="wo.topic">{{'#'+ wo.topic}} </a>
-                                                {{wo.content.replaceAll('#'+wo.topic)}}
+                                        {{wo.content.replace('#'+wo.topic,'')}}
                                             </p>
 
                                             <!--                        <div class="row">-->

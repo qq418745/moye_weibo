@@ -19,7 +19,7 @@
                     </div>
                     <p>
                         <a  href="{{'#search?type=HT' + '&text=' +  wo.topic}}"  ng-show="wo.topic">{{'#'+ wo.topic}} </a>
-                        {{wo.content.replaceAll('#'+wo.topic)}}
+                {{wo.content.replace('#'+wo.topic,'')}}
                     </p>
 
                     <!--                        <div class="row">-->
