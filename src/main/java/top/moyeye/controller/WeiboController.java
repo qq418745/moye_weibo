@@ -10,6 +10,7 @@ import top.moyeye.bean.common.CommonResult;
 import top.moyeye.bean.common.PageResult;
 import top.moyeye.bean.Weibo;
 import top.moyeye.dao.WeiboRepository;
+import top.moyeye.dao.WeiboUserRepository;
 import top.moyeye.service.CommentService;
 import top.moyeye.service.FavoriteService;
 import top.moyeye.service.LikeService;
@@ -37,6 +38,9 @@ public class WeiboController extends BaseController{
 
     @Autowired
     CommentService commentService;
+
+    @Autowired
+    WeiboUserRepository weiboUserRepository;
 
     @RequestMapping("send")
     @ResponseBody
@@ -80,6 +84,11 @@ public class WeiboController extends BaseController{
     @ResponseBody
     public PageResult findAll(@RequestBody Weibo weibo, int page, int rows){
         return weiboService.findAll(weibo,(isLogin() ? currentUser() : null), PageRequestOf(page, rows, Sort.by(Sort.Direction.DESC, "postTime")));
+    }
+    @RequestMapping("p/findAllByUserId")
+    @ResponseBody
+    public PageResult findAllByUserId(Integer id, int page, int rows){
+        return weiboService.findByUserId(id, PageRequestOf(page, rows, Sort.by(Sort.Direction.DESC, "postTime")));
     }
 
 }

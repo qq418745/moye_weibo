@@ -48,6 +48,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
                 "/weiboUser/p/**",
                 "/weibo/p/**",
                 "/view/**",
+                "/follow/p/**",
                 "/login**").permitAll()
                 .anyRequest().authenticated();
 

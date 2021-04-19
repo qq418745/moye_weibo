@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import top.moyeye.bean.WeiboUser;
+import top.moyeye.dao.WeiboUserRepository;
 
 
 @Controller
@@ -13,7 +14,8 @@ import top.moyeye.bean.WeiboUser;
 public class WeiboUserController extends BaseController{
      final  String REDIRECT = "redirect:../../redirect.html";
 
-
+     @Autowired
+    WeiboUserRepository weiboUserRepository;
     /**
      * 个人主页
      * @return 个人主页
@@ -57,6 +59,11 @@ public class WeiboUserController extends BaseController{
     @ResponseBody
     public WeiboUser currentWeiboUser(){
          return  currentUser();
+    }
+    @RequestMapping("p/user")
+    @ResponseBody
+    public WeiboUser user(Integer id){
+        return weiboUserRepository.findById(id).get();
     }
 
     @RequestMapping("save")

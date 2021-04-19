@@ -17,13 +17,13 @@
 
                 <ul class="list-group list-group-unbordered mb-3">
                     <li class="list-group-item">
-                        <b>关注</b> <a class="float-right">1,322</a>
+                        <b>关注</b> <a class="float-right">{{followList.length}}</a>
                     </li>
                     <li class="list-group-item">
-                        <b>粉丝</b> <a class="float-right">543</a>
+                        <b>粉丝</b> <a class="float-right">{{unFollowList.length}}</a>
                     </li>
                     <li class="list-group-item">
-                        <b>微博</b> <a class="float-right">287</a>
+                        <b>微博</b> <a class="float-right">{{weiboList.length}}</a>
                     </li>
                 </ul>
 
@@ -74,124 +74,201 @@
             <div class="card-header p-2">
                 <ul class="nav nav-pills">
                     <li class="nav-item"><a class="nav-link active" ng-class="{'active' : cardSwitch == 'activity'}" ng-click="cardSwitch = 'activity'">动态</a></li>
+                    <li class="nav-item"><a class="nav-link"  ng-class="{'active' : cardSwitch == 'timeline'}" ng-click="cardSwitch = 'timeline'" >关注</a></li>
+                    <li class="nav-item"><a class="nav-link"  ng-class="{'active' : cardSwitch == 'timeline2'}" ng-click="cardSwitch = 'timeline2'" >粉丝</a></li>
+
                 </ul>
             </div><!-- /.card-header -->
             <div class="card-body">
                 <div class="tab-content">
+                    <div  ng-show="cardSwitch == 'activity'">
+                        <div class="row" >
+                            <div class="card col-md-12">
+                                <div class="card-header p-2">
+                                    <ul class="nav nav-pills">
 
-                        <!-- Post -->
-                        <div class="post">
-                            <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="./dist/img/user1-128x128.jpg" alt="user image">
-                                <span class="username">
-                          <a href="#">Jonathan Burke Jr.</a>
-                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
+                                    </ul>
+                                </div><!-- /.card-header -->
+                                <div class="card-body">
+                                    <div class="tab-content ">
+                                        <!-- Post -->
+                                        <div class="post" ng-repeat="wo in weiboList">
+                                            <div class="user-block">
+                                                <img  class="img-circle" ng-src="{{wo.weiboUser.userLogo}}" alt="头像">
+                                                <span class="username">
+                          <a href="javascript:void(0)" ng-click="toFrofile(wo.weiboUser)">{{wo.weiboUser.nickname}}</a>
+                                                    <!--                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>-->
                         </span>
-                                <span class="description">Shared publicly - 7:30 PM today</span>
-                            </div>
-                            <!-- /.user-block -->
-                            <p>
-                                Lorem ipsum represents a long-held tradition for designers,
-                                typographers and the like. Some people hate it and argue for
-                                its demise, but others ignore the hate as they create awesome
-                                tools to help create filler text for everyone from bacon lovers
-                                to Charlie Sheen fans.
-                            </p>
+                                                <span class="description">{{wo.postTime}}</span>
+                                            </div>
+                                            <p>
+                                                {{wo.content}}
+                                            </p>
 
-                            <p>
-                                <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
-                                <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
-                                <span class="float-right">
-                          <a href="#" class="link-black text-sm">
-                            <i class="far fa-comments mr-1"></i> Comments (5)
-                          </a>
+                                            <!--                        <div class="row">-->
+                                            <!--                            <div class="col-sm-4">-->
+                                            <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                                            <!--                            </div>-->
+                                            <!--                            <div class="col-sm-4">-->
+                                            <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                                            <!--                            </div>-->
+                                            <!--                            <div class="col-sm-4">-->
+                                            <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                                            <!--                            </div>-->
+                                            <!--                        </div>-->
+                                            <!--                        <div class="row">-->
+                                            <!--                            <div class="col-sm-4">-->
+                                            <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                                            <!--                            </div>-->
+                                            <!--                            <div class="col-sm-4">-->
+                                            <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                                            <!--                            </div>-->
+                                            <!--                            <div class="col-sm-4">-->
+                                            <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                                            <!--                            </div>-->
+                                            <!--                        </div>-->
+                                            <!--                        <div class="row">-->
+                                            <!--                            <div class="col-sm-4">-->
+                                            <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                                            <!--                            </div>-->
+                                            <!--                            <div class="col-sm-4">-->
+                                            <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                                            <!--                            </div>-->
+                                            <!--                            <div class="col-sm-4">-->
+                                            <!--                                <img class="img-fluid" src="{{wo.weiboUser.userLogo}}" alt="Photo">-->
+                                            <!--                            </div>-->
+                                            <!--                        </div>-->
+                                            <p>
+                                                <a href="javascript:void(0)" ng-show="! wo.favorite" ng-click ="addFavorite(wo)" class="link-black text-sm mr-2"><i class="fas fa-star mr-1"></i> 收藏</a>
+                                                <a href="javascript:void(0)" ng-show="wo.favorite" ng-click ="deleteFavorite(wo)" class="link-black text-sm mr-2"><i class="fas fa-star mr-1"></i> 取消收藏</a>
+
+                                                <a href="javascript:void(0)"  ng-show="! wo.like" ng-click ="addLike(wo)" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> 赞</a>
+                                                <a href="javascript:void(0)"  ng-show="wo.like" ng-click ="deleteLike(wo)"  class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> 取消赞</a>
+
+                                                <a href="javascript:void(0)"  ng-click ="deleteWeibo(wo.weiboId)"  class="link-black text-sm"><i class="far fa-trash-alt mr-2"></i> 删除</a>
+
+                                                <span class="float-right">
+                                <a href="javascript:void(0)"   ng-init="wo.comments.length > 0 ? wo.showComment = wo.weiboId : wo.showComment = 0"  ng-click="wo.showComment === wo.weiboId ?  wo.showComment = 0 : wo.showComment = wo.weiboId" class="link-black text-sm">
+                                  <i class="far fa-comments mr-1"></i> 评论{{'('+ wo.comments.length +')'}}
+                               </a>
                         </span>
-                            </p>
 
-                            <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
-                        </div>
-                        <!-- /.post -->
+                                            </p>
+                                            <div class="card-footer card-comments" ng-show="wo.showComment === wo.weiboId">
+                                                <div class="card-comment" ng-repeat="comment in wo.comments" >
+                                                    <!-- User image -->
+                                                    <img class="img-circle img-sm" ng-src="{{comment.weiboUser.userLogo}}" alt="">
+                                                    <div class="comment-text">
+                                            <span class="username">
+                                              {{comment.weiboUser.nickname}}
+                                              <span class="text-muted float-right">{{comment.createTime}}</span>
+                                            </span><!-- /.username -->
+                                                        {{comment.commentText}}
+                                                    </div>
+                                                    <!-- /.comment-text -->
+                                                </div>
 
-                        <!-- Post -->
-                        <div class="post clearfix">
-                            <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="./dist/img/user7-128x128.jpg" alt="User Image">
-                                <span class="username">
-                          <a href="#">Sarah Ross</a>
-                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                        </span>
-                                <span class="description">Sent you a message - 3 days ago</span>
-                            </div>
-                            <!-- /.user-block -->
-                            <p>
-                                Lorem ipsum represents a long-held tradition for designers,
-                                typographers and the like. Some people hate it and argue for
-                                its demise, but others ignore the hate as they create awesome
-                                tools to help create filler text for everyone from bacon lovers
-                                to Charlie Sheen fans.
-                            </p>
+                                                <div class="input-group input-group-sm mb-0">
+                                                    <input ng-model="commentText" class="form-control form-control-sm" placeholder="说点什么吧！">
+                                                    <div class="input-group-append">
+                                                        <button type="button" ng-click="sendComment(commentText, wo)" class="btn btn-danger">发送</button>
+                                                    </div>
+                                                </div>
 
-                            <form class="form-horizontal">
-                                <div class="input-group input-group-sm mb-0">
-                                    <input class="form-control form-control-sm" placeholder="Response">
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-danger">Send</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <!-- /.post -->
-
-                        <!-- Post -->
-                        <div class="post">
-                            <div class="user-block">
-                                <img class="img-circle img-bordered-sm" src="./dist/img/user6-128x128.jpg" alt="User Image">
-                                <span class="username">
-                          <a href="#">Adam Jones</a>
-                          <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                        </span>
-                                <span class="description">Posted 5 photos - 5 days ago</span>
-                            </div>
-                            <!-- /.user-block -->
-                            <div class="row mb-3">
-                                <div class="col-sm-6">
-                                    <img class="img-fluid" src="./dist/img/photo1.png" alt="Photo">
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-sm-6">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <img class="img-fluid mb-3" src="./dist/img/photo2.png" alt="Photo">
-                                            <img class="img-fluid" src="./dist/img/photo3.jpg" alt="Photo">
+                                            </div>
                                         </div>
-                                        <!-- /.col -->
-                                        <div class="col-sm-6">
-                                            <img class="img-fluid mb-3" src="./dist/img/photo4.jpg" alt="Photo">
-                                            <img class="img-fluid" src="./dist/img/photo1.png" alt="Photo">
-                                        </div>
-                                        <!-- /.col -->
+                                        <!-- /.post -->
                                     </div>
-                                    <!-- /.row -->
-                                </div>
-                                <!-- /.col -->
+                                    <!-- /.tab-content -->
+                                </div><!-- /.card-body -->
+
+
+
                             </div>
-                            <!-- /.row -->
-
-                            <p>
-                                <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i> Share</a>
-                                <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i> Like</a>
-                                <span class="float-right">
-                          <a href="#" class="link-black text-sm">
-                            <i class="far fa-comments mr-1"></i> Comments (5)
-                          </a>
-                        </span>
-                            </p>
-
-                            <input class="form-control form-control-sm" type="text" placeholder="Type a comment">
+                            <!-- /.nav-tabs-custom -->
                         </div>
-                        <!-- /.post -->
                     </div>
+
+                    <div  ng-show="cardSwitch == 'timeline'" >
+                        <div class="card-body pb-0">
+                            <div class="row d-flex align-items-stretch">
+                                <div class="col-12   align-items-stretch" ng-repeat="u in unFollowList">
+                                    <div class="card bg-light">
+                                        <div class="card-header text-muted border-bottom-0">
+                                            用户信息
+                                        </div>
+                                        <div class="card-body pt-0">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <h2 class="lead"><b>   {{ u.nickname }}</b></h2>
+                                                    <p class="text-muted text-sm"><b>爱好: </b> {{u.hobby}} </p>
+                                                    <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> 地址: {{u.province}}</li>
+                                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> {{u.email}}</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-5 text-center">
+                                                    <img ng-src="{{u.userLogo}}" alt=""  class="profile-user-img img-fluid img-circle">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="text-right">
+                                                <a href="#" class="btn btn-sm bg-teal">
+                                                    <i class="fas fa-comments"></i> 取消关注
+                                                </a>
+                                                <a href="{{'#publicProfile?userId=' + u.userId}}" class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-user"></i> 前往主页
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div  ng-show="cardSwitch == 'timeline2'" >
+                        <div class="card-body pb-0">
+                            <div class="row d-flex align-items-stretch">
+                                <div class="col-12   align-items-stretch" ng-repeat="u in followList">
+                                    <div class="card bg-light">
+                                        <div class="card-header text-muted border-bottom-0">
+                                            用户信息
+                                        </div>
+                                        <div class="card-body pt-0">
+                                            <div class="row">
+                                                <div class="col-7">
+                                                    <h2 class="lead"><b>   {{ u.nickname }}</b></h2>
+                                                    <p class="text-muted text-sm"><b>爱好: </b> {{u.hobby}} </p>
+                                                    <ul class="ml-4 mb-0 fa-ul text-muted">
+                                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-building"></i></span> 地址: {{u.province}}</li>
+                                                        <li class="small"><span class="fa-li"><i class="fas fa-lg fa-phone"></i></span> {{u.email}}</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-5 text-center">
+                                                    <img ng-src="{{u.userLogo}}" alt=""  class="profile-user-img img-fluid img-circle">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer">
+                                            <div class="text-right">
+                                                <!--                                                <a href="#" class="btn btn-sm bg-teal">-->
+                                                <!--                                                    <i class="fas fa-comments"></i> 取消关注-->
+                                                <!--                                                </a>-->
+                                                <a href="{{'#publicProfile?userId=' + u.userId}}" class="btn btn-sm btn-primary">
+                                                    <i class="fas fa-user"></i> 前往主页
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <!-- /.tab-pane -->
+                </div>
                 <!-- /.tab-content -->
             </div><!-- /.card-body -->
         </div>

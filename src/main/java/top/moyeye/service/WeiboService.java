@@ -15,4 +15,6 @@ public interface WeiboService {
 
 
     PageResult findAllByUser(Weibo setWeiboUser, PageRequest postTime);
+
+    PageResult findByUserId(Integer id, PageRequest postTime);
 }
