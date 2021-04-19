@@ -14,4 +14,7 @@ public interface  WeiboRepository  extends JpaRepository<Weibo, Integer> {
    Page<Weibo> findByWeiboUser(WeiboUser user, Pageable pageable);
 
 
+   List<Weibo> findByContentLike(String s);
+
+   List<Weibo>  findByTopicLike(String s);
 }

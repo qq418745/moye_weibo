@@ -15,4 +15,6 @@ public interface WeiboUserRepository extends JpaRepository<WeiboUser, Integer> {
 
     @Query("select w from WeiboUser w where w.userId in (:ids)")
     List<WeiboUser> findInFollowUserId(ArrayList<Integer> ids);
+
+    List<WeiboUser> findByNicknameLike(String s);
 }
