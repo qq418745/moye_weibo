@@ -55,11 +55,7 @@ public class Weibo {
 
     private String pic9;
 
-    private Integer commentId;
-
-    private Integer likeId;
-
-    private Integer favoriteId;
+    private String topic;
 
     /**
      * 是否收藏

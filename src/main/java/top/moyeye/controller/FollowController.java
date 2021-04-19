@@ -113,4 +113,23 @@ public class FollowController extends BaseController{
         return  new PageResult(users.size(),users);
     }
 
+    /**
+     * 是否关注
+     * @param id
+     * @return
+     */
+    @RequestMapping("p/isFollow")
+    @ResponseBody
+    public boolean isFollow(Integer id){
+        if(isLogin()){
+            if(id != null){
+                List<Follow> follows = followRepository.unDelete(currentUser().getUserId(), id);
+                if(!follows.isEmpty()){
+                  return  true;
+                }
+            }
+        }
+        return false;
+    }
+
 }

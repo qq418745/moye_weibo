@@ -41,9 +41,36 @@ app.controller('publicProfileController' ,function($scope,$controller,httpServic
         })
     }
 
-    $scope.getFollow();
-    $scope.getUserInfo();
-    $scope.searchWeiboList();
+
+
+
+
+    $scope.unFollow  = function (id) {
+        httpService.postJson(  "../follow/currentUser/delete"+ '?id='+ id ,{}) .success(function (response){
+            $scope.init();
+        })
+    }
+
+    $scope.follow  = function (id) {
+        httpService.postJson(  "../follow/currentUser/add"+ '?id='+ id ,{}) .success(function (response){
+            $scope.init();
+        })
+    }
+
+    $scope.isFollowTow = false;
+    $scope.isFollow = function (id) {
+        httpService.postJson(  "../follow/p/isFollow"+ '?id='+ id ,{}) .success(function (response){
+            $scope.isFollowTow  = response;
+        })
+    };
+    $scope.init = function () {
+        $scope.getFollow();
+        $scope.getUserInfo();
+        $scope.searchWeiboList();
+        $scope.isFollow($scope.userId)
+    }
+    $scope.init();
+
 
 
 

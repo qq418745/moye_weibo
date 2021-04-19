@@ -45,6 +45,15 @@ public class WeiboController extends BaseController{
     @RequestMapping("send")
     @ResponseBody
     public Weibo send(@RequestBody Weibo weibo){
+        //话题
+        if(weibo.getContent().contains("#")){
+            String topic  = weibo.getContent().split("#")[1].split(" ")[0];
+            weibo.setTopic(topic);
+        }
+        //@
+        if(weibo.getContent().contains("@")){
+        }
+
       return  weiboService.save(weibo.setWeiboUser( currentUser()));
     }
 
