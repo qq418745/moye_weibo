@@ -70,7 +70,8 @@
 
       <!-- Right navbar links -->
       <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
-        <li  class="nav-item"><a   class="nav-link" href="/logout">退出登陆</a></li>
+        <li  class="nav-item" ng-show="isLogin2"><a   class="nav-link" href="/logout">退出登陆</a></li>
+        <li  class="nav-item"  ng-show="!isLogin2"><a   class="nav-link" href="/login.html">前往登陆 | 注册</a></li>
 
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown">

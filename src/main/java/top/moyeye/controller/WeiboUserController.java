@@ -34,7 +34,6 @@ public class WeiboUserController extends BaseController{
      */
     @RequestMapping("p/add")
     public String add(String username, String password, String nickname){
-        System.out.println(username  + password + nickname);
         weiboUserService.add(new WeiboUser().setUsername(username).setPassword(password).setNickname(nickname));
         return REDIRECT;
 
@@ -46,13 +45,14 @@ public class WeiboUserController extends BaseController{
      * @return 结果
      */
     @RequestMapping("p/forgot-password")
-    public String forgotPassword(String email){
-        System.out.println(email);
+    public String forgotPassword(String email,String password){
+
         WeiboUser user = weiboUserService.findByEmail(email);
         if(user != null){
+            weiboUserService.add((user.setPassword(password)));
             return REDIRECT;
         }
-        return "redirect:../../forgot-password.html";
+        return "redirect:../../forgot-password.html?error=email";
     }
 
     @RequestMapping("currentWeiboUser")
@@ -64,6 +64,11 @@ public class WeiboUserController extends BaseController{
     @ResponseBody
     public WeiboUser user(Integer id){
         return weiboUserRepository.findById(id).get();
+    }
+    @RequestMapping("p/isLogin")
+    @ResponseBody
+    public boolean user(){
+        return isLogin();
     }
 
     @RequestMapping("save")
