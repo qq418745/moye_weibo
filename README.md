@@ -20,3 +20,16 @@ Spring全家桶  尽量加了注释
 # 数据库
 MySQL  建表测试SQL见根目录  
 > weibo_test.sql
+
+# 页面
+> 首页 http://localhsot:8080
+![img.png](img.png)
+> 管理员 http://localhsot:8080/admin
+> ![img_1.png](img_1.png)
+
+# 页面展示
+> ![img_2.png](img_2.png)
+> ![img_3.png](img_3.png)
+> ![img_4.png](img_4.png)
+> ![img_5.png](img_5.png)
+> ![img_6.png](img_6.png)
