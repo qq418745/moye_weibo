@@ -189,26 +189,10 @@
               </div>
               <div class="card-body p-0">
                 <ul class="nav nav-pills flex-column">
-                  <li class="nav-item active">
-                    <a href="#" class="nav-link">
-                      <i class="fas fa-inbox"></i> 猫猫能量
-                      <span class="badge bg-primary float-right">爆</span>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="fas fa-inbox"></i> 江南百景图
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="fas fa-inbox"></i> 无心上班只想撸猫
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="fas fa-inbox"></i> 攻控推文自我记录
-                      <span class="badge bg-warning float-right">65</span>
+                  <li class="nav-item active" ng-repeat="t in topicList">
+                    <a  href="{{'#search?type=HT' + '&text=' + t}}" class="nav-link">
+                      <i class="fas fa-inbox"></i> {{t}}
+                      <span  ng-show="$index == 0" class="badge bg-primary float-right">爆</span>
                     </a>
                   </li>
 

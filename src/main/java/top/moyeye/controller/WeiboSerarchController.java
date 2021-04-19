@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import top.moyeye.dao.WeiboRepository;
 import top.moyeye.dao.WeiboUserRepository;
 
+import java.util.List;
+import java.util.Map;
+
 
 @Controller
 @RequestMapping("weibo/p")
@@ -55,4 +58,13 @@ public class WeiboSerarchController extends BaseController{
         return "{}";
     }
 
+    /**
+     * 热门主题
+     * @return
+     */
+    @RequestMapping("fireTopic")
+    @ResponseBody
+    public List<String> fireTopic(){
+        return weiboRepository.findFireTopic();
+    }
 }
