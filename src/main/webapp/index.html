@@ -60,9 +60,9 @@
           <div class="input-group input-group-sm">
             <input class="form-control form-control-navbar" ng-model="searchText" type="search" placeholder="想念的人会再相见..." aria-label="Search">
             <div class="input-group-append">
-              <button class="btn btn-navbar" ng-click="search()" type="button">
+              <a  class="btn btn-navbar" href="{{'#search?type=' + ('微博' == searchType ? 'WO' : ('话题' == searchType ?  'HT' : 'YH')) + '&text=' + searchText}}"  type="button">
                 <i class="fas fa-search"></i>
-              </button>
+              </a>
             </div>
           </div>
         </form>
@@ -78,26 +78,26 @@
             <i class="far fa-bell"></i>
             <span class="badge badge-warning navbar-badge">15</span>
           </a>
-          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-header">15 Notifications</span>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-envelope mr-2"></i> 4 new messages
-              <span class="float-right text-muted text-sm">3 mins</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-users mr-2"></i> 8 friend requests
-              <span class="float-right text-muted text-sm">12 hours</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> 3 new reports
-              <span class="float-right text-muted text-sm">2 days</span>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-          </div>
+<!--          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">-->
+<!--            <span class="dropdown-header">15 Notifications</span>-->
+<!--            <div class="dropdown-divider"></div>-->
+<!--            <a href="#" class="dropdown-item">-->
+<!--              <i class="fas fa-envelope mr-2"></i> 4 new messages-->
+<!--              <span class="float-right text-muted text-sm">3 mins</span>-->
+<!--            </a>-->
+<!--            <div class="dropdown-divider"></div>-->
+<!--            <a href="#" class="dropdown-item">-->
+<!--              <i class="fas fa-users mr-2"></i> 8 friend requests-->
+<!--              <span class="float-right text-muted text-sm">12 hours</span>-->
+<!--            </a>-->
+<!--            <div class="dropdown-divider"></div>-->
+<!--            <a href="#" class="dropdown-item">-->
+<!--              <i class="fas fa-file mr-2"></i> 3 new reports-->
+<!--              <span class="float-right text-muted text-sm">2 days</span>-->
+<!--            </a>-->
+<!--            <div class="dropdown-divider"></div>-->
+<!--            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>-->
+<!--          </div>-->
         </li>
         <li class="nav-item">
           <a class="nav-link"   href="javascript:void(0)"><i
@@ -300,6 +300,7 @@
 <script type="text/javascript" src="js/controller/starController.js"></script>
 <script type="text/javascript" src="js/controller/likesController.js"></script>
 <script type="text/javascript" src="js/controller/commentController.js"></script>
+<script type="text/javascript" src="js/controller/searchController.js"></script>
 
 <script type="text/javascript" src="js/service/httpService.js"></script>
 <!-- AdminLTE for demo purposes -->

@@ -1,13 +1,9 @@
 package top.moyeye.controller;
 
-import org.apache.tomcat.util.buf.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import top.moyeye.dao.WeiboRepository;
 import top.moyeye.dao.WeiboUserRepository;
 
@@ -18,7 +14,9 @@ public class WeiboSerarchController extends BaseController{
     /**
      * 枚举常量
      */
-    final  String WO = "微博" , HT = "话题" , YH = "用户";
+    final  String WO = "WO" , //微博
+            HT = "HT" , //话题
+            YH = "YH"; //用户
 
     /**
      * 注入微博数据表操作对象

@@ -22,6 +22,10 @@ app.config(function($provide, $routeProvider) {
                 templateUrl: 'view/like.html',
                 controller: 'likesController',
             })
+            .when('/search', {
+                templateUrl: 'view/search.html',
+                controller: 'searchController',
+            })
             .when('/comment', {
                 templateUrl: 'view/comment.html',
                 controller: 'commentController',
