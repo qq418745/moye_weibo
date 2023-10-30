@@ -1,10 +1,11 @@
-# 毕业设计: 微博系统  moye_weibo 
-莫耶微博  - 毕业设计: 微博系统
+# 毕业设计 - 微博系统  moye_weibo 
+莫耶微博 
+毕业设计-微博系统
 基于SpringBoot实现微博系统。
 > 迫于给女朋友写论文, 开工这个微博系统。
 
 因为时间关系, 基本上是最快速度写(糊)出来的, 论文原文迫于她本人意愿无法开源。
-构架是 SpringBoot 加 SpringDataJPA 加 SpringSecurity 实现(Spring全家桶)。
+构架是 SpringBoot 加 SpringDataJPA 加 SpringSecurity (Spring全家桶)。
 
 # 前端是: angularJs 和 AdminLTE3.1 模板 
 
